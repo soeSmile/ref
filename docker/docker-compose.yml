@@ -1,0 +1,31 @@
+version: '3'
+services:
+  nginx:
+    build:
+      context: 'unit'
+    container_name: ref-unit
+    ports:
+      - '80:80'
+    volumes:
+      - '../:/var/www'
+      - './unit/conf.json:/var/lib/unit/conf.json'
+      - './unit/logs:/var/log/unit'
+      - './unit/certs:/var/lib/unit/certs/'
+      - './conf/php-ini-overrides.ini:/usr/local/etc/php/conf.d/40-custom.ini'
+    environment:
+      XDEBUG_MODE: debug
+      XDEBUG_CONFIG: client_host=172.17.0.1 idekey=PHPSTORM start_with_request=yes
+      PHP_IDE_CONFIG: serverName=Docker
+    working_dir: /var/www
+    links:
+      - pg
+  pg:
+    image: 'postgres:14'
+    container_name: ref-pg
+    ports:
+      - '127.0.0.1:32772:5432'
+    environment:
+      POSTGRES_PASSWORD: '123456'
+    volumes:
+      - './database/pg:/var/lib/postgresql/data'
+      - './temp:/temp'

@@ -1,0 +1,4 @@
+temp/*
+unit/logs/*
+app/logs/*
+database/*
