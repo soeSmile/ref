@@ -1,0 +1,11 @@
+@import "reset";
+@import "~@mdi/font/scss/materialdesignicons";
+@import "fonts/fonts";
+
+html, body {
+  font-family: $fontRegular;
+}
+
+@import "element-plus/dist/index.css";
+
+@import "layout";

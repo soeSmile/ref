@@ -10,15 +10,16 @@
     "production": "mix --production"
   },
   "dependencies": {
+    "@mdi/font": "6.5.95",
     "axios": "0.25.0",
+    "element-plus": "^2.0.1",
     "laravel-mix": "6.0.41",
-    "vue": "^3.2.30",
-    "vue-loader": "^17.0.0",
-    "vue-router": "4.0.12"
-  },
-  "devDependencies": {
     "resolve-url-loader": "5.0.0",
     "sass": "1.49.7",
-    "sass-loader": "12.4.0"
+    "sass-loader": "12.4.0",
+    "vue": "^3.2.30",
+    "vue-loader": "^17.0.0",
+    "vue-router": "4.0.12",
+    "vuex": "4.0.2"
   }
 }

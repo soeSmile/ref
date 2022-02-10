@@ -1,0 +1,59 @@
+@font-face {
+  font-family: 'Inter-Regular';
+  src: url('Inter-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter-Light';
+  src: url('Inter-Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter-Bold';
+  src: url('Inter-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+// Fonts
+$fontLight: 'Inter-Light';
+$fontRegular: 'Inter-Regular';
+$fontBold: 'Inter-Bold';
+
+// Font size
+$fontSize: 0.75rem !default;
+
+.fnt {
+  &.light {
+    font-family: $fontLight;
+  }
+
+  &.regular {
+    font-family: $fontRegular;
+  }
+
+  &.bold {
+    font-family: $fontBold;
+  }
+
+  @for $i from 5 through 10 {
+    $value: $i * 100;
+    &.w#{$value} {
+      font-weight: $value !important;
+    }
+  }
+
+  @for $i from 0 through 20 {
+    &.size-#{$i} {
+      font-size: $fontSize !important;
+    }
+    $fontSize: $fontSize + 0.25;
+  }
+}

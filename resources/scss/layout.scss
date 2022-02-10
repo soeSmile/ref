@@ -1,0 +1,61 @@
+.app-container {
+  display: grid;
+  grid-template-rows: 50px 1fr 50px;
+  grid-template-areas:
+    "menu header"
+    "menu content"
+    "menu footer";
+  height: 100vh;
+
+  &.show {
+    grid-template-columns: 64px 1fr;
+    transition: all .3s ease;
+  }
+
+  &.hide {
+    grid-template-columns: 240px 1fr;
+    transition: all .3s ease;
+  }
+
+  & .header {
+    grid-area: header;
+    background-color: #545c64;
+  }
+
+  & .menu {
+    grid-area: menu;
+    border-right: none;
+
+    & .collapse {
+      display: flex;
+      align-items: center;
+      padding: 0.5rem;
+      transition: all .3s ease;
+
+      &.center {
+        justify-content: center;
+      }
+
+      &.left {
+        justify-content: end;
+      }
+
+      & .icon {
+        font-size: 1.5rem;
+        color: #409EFF;
+        cursor: pointer;
+      }
+    }
+  }
+
+  & .content {
+    grid-area: content;
+    background-color: #F2F6FC;
+    padding: 2rem;
+  }
+
+  & .footer {
+    grid-area: footer;
+    background-color: #545c64;
+  }
+}
