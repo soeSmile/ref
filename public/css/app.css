@@ -26743,7 +26743,7 @@ html, body {
 
 .app-container {
   display: grid;
-  grid-template-rows: 50px 1fr 50px;
+  grid-template-rows: 40px 1fr 40px;
   grid-template-areas: "menu header" "menu content" "menu footer";
   height: 100vh;
 }
@@ -26757,7 +26757,7 @@ html, body {
 }
 .app-container .header {
   grid-area: header;
-  background-color: #545c64;
+  background-color: #324057;
 }
 .app-container .menu {
   grid-area: menu;
@@ -26787,5 +26787,5 @@ html, body {
 }
 .app-container .footer {
   grid-area: footer;
-  background-color: #545c64;
+  background-color: #324057;
 }

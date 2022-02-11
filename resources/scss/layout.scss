@@ -1,6 +1,6 @@
 .app-container {
   display: grid;
-  grid-template-rows: 50px 1fr 50px;
+  grid-template-rows: 40px 1fr 40px;
   grid-template-areas:
     "menu header"
     "menu content"
@@ -19,7 +19,7 @@
 
   & .header {
     grid-area: header;
-    background-color: #545c64;
+    background-color: #324057;
   }
 
   & .menu {
@@ -51,11 +51,11 @@
   & .content {
     grid-area: content;
     background-color: #F2F6FC;
-    padding: 2rem;
+    padding: 1rem;
   }
 
   & .footer {
     grid-area: footer;
-    background-color: #545c64;
+    background-color: #324057;
   }
 }
