@@ -9,7 +9,7 @@ services:
     volumes:
       - '../:/var/www'
       - './unit/conf.json:/var/lib/unit/conf.json'
-      - './unit/logs:/var/log/unit'
+      - './unit/logs/unit.log:/var/log/unit.log'
       - './unit/certs:/var/lib/unit/certs/'
       - './conf/php-ini-overrides.ini:/usr/local/etc/php/conf.d/40-custom.ini'
     environment:

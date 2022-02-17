@@ -11,7 +11,7 @@
     >
       <div class="collapse"
            :class="isCollapse ? 'center' : 'left'">
-        <em class="mdi mdi-menu icon"
+        <em class="mdi mdi-menu icon sm-px-4 sm-py-3"
             @click="isCollapse = !isCollapse"/>
       </div>
 
