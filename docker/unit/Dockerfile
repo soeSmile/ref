@@ -2,6 +2,8 @@ FROM nginx/unit:1.26.1-php8.1
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
+    ntp \
+    whois \
     build-essential \
     locales \
     zip \
