@@ -29,7 +29,7 @@ class RunWhoIsExec extends Command
      */
     public function handle(): void
     {
-        $domains = ['myref.top', 'trelo.com', 'atfn.ru'];
+        $domains = ['myref.top', 'trelo.com'];
 
         foreach ($domains as $domain) {
             $output = $data = [];
