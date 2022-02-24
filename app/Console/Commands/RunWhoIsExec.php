@@ -4,9 +4,14 @@ declare(strict_types=1);
 
 namespace App\Console\Commands;
 
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 
+use function array_key_exists;
 use function exec;
+use function in_array;
+use function preg_match;
+use function strtolower;
 use function trim;
 
 /**
@@ -25,20 +30,48 @@ class RunWhoIsExec extends Command
     protected $description = 'Run whois exec';
 
     /**
+     * @var array
+     */
+    private const MAPPING = [
+        'domain name'                            => 'name',
+        'domain'                                 => 'name',
+        'registry domain id'                     => 'domain_id',
+        'registrar'                              => 'registrar',
+        'creation date'                          => 'created_date',
+        'created'                                => 'created_date',
+        'updated date'                           => 'updated_date',
+        'registrar registration expiration date' => 'expire_date',
+        'registry expiry date'                   => 'expire_date',
+        'free-date'                              => 'expire_date',
+    ];
+
+    /**
+     * @var array
+     */
+    private const DATE_FIELD = [
+        'created_date',
+        'updated_date',
+        'expire_date'
+    ];
+
+    /**
      * @return void
      */
     public function handle(): void
     {
-        $domains = ['myref.top', 'trelo.com'];
+        $domains = ['myref.top', 'trelo.com', 'ya.ru', 'ok.ru', 'mir.ru', 'yandex.ru', 'google.com'];
+        $data = [];
 
         foreach ($domains as $domain) {
-            $output = $data = [];
+            $output = [];
             exec('whois ' . $domain, $output, $result);
 
             if (!$result) {
-                $data = $this->parseResult($output);
+                $data[$domain] = $this->parseResult($output);
             }
         }
+
+        $save = $data;
     }
 
     /**
@@ -52,10 +85,15 @@ class RunWhoIsExec extends Command
         foreach ($data as $item) {
             preg_match('/(.+?):(.+)/', $item, $array);
 
-            $key = trim($array !== [] ? $array[1] : $item, ' \n\r\t\v\x00<>"');
-            $value = trim($array !== [] ? $array[2] : $item, ' \n\r\t\v\x00<>"');
+            if ($array !== []) {
+                $key = strtolower(trim($array[1]));
+                $value = trim($array[2]);
 
-            $result[$key] = $value;
+                if (array_key_exists($key, self::MAPPING)) {
+                    $field = self::MAPPING[$key];
+                    $result[$field] = in_array($field, self::DATE_FIELD, true) ? Carbon::parse($value) : $value;
+                }
+            }
         }
 
         return $result;
