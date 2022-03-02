@@ -3,12 +3,11 @@
        :class="isCollapse ? 'show' : 'hide'">
     <header class="header"></header>
 
-    <el-menu
-        class="menu"
-        :collapse="isCollapse"
-        router
-        default-active="/"
-    >
+    <el-menu class="menu"
+             :class="isCollapse ? 'show' : 'hide'"
+             :collapse="isCollapse"
+             router
+             default-active="/">
       <div class="collapse"
            :class="isCollapse ? 'center' : 'left'">
         <em class="mdi mdi-menu icon sm-px-4 sm-py-3"
@@ -18,8 +17,7 @@
       <el-menu-item v-for="(val,key) in menu"
                     :key="key"
                     :index="val.link"
-                    :route="val.link"
-      >
+                    :route="val.link">
         <el-icon>
           <em :class="val.icon"/>
         </el-icon>
@@ -28,6 +26,10 @@
         </template>
       </el-menu-item>
     </el-menu>
+    <div class="menu-mobile-bg"
+         @click="isCollapse = !isCollapse"
+         :class="isCollapse ? 'show' : 'hide'"></div>
+
 
     <main class="content">
       <router-view/>
