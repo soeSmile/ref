@@ -1,41 +1,34 @@
 <template>
-  <div class="app-container"
-       :class="isCollapse ? 'show' : 'hide'">
-    <header class="header"></header>
-
-    <el-menu class="menu"
-             :class="isCollapse ? 'show' : 'hide'"
-             :collapse="isCollapse"
-             router
-             default-active="/">
-      <div class="collapse"
-           :class="isCollapse ? 'center' : 'left'">
-        <em class="mdi mdi-menu icon sm-px-4 sm-py-3"
-            @click="isCollapse = !isCollapse"/>
+  <div class="app">
+    <div class="sidebar">
+      <div class="sidebar__top">
+        <img class="sidebar__img"
+             src="img/logo.png" alt="">
       </div>
-
-      <el-menu-item v-for="(val,key) in menu"
-                    :key="key"
-                    :index="val.link"
-                    :route="val.link">
-        <el-icon>
-          <em :class="val.icon"/>
-        </el-icon>
-        <template #title>
-          {{ val.title }}
-        </template>
-      </el-menu-item>
-    </el-menu>
-    <div class="menu-mobile-bg"
-         @click="isCollapse = !isCollapse"
-         :class="isCollapse ? 'show' : 'hide'"></div>
-
-
-    <main class="content">
+      <div class="sidebar__wrap">
+        <div class="sidebar__group">
+          <div class="sidebar__menu">
+            <router-link class="sidebar__item"
+                         v-for="(val,key) in menu"
+                         :key="key"
+                         :to="val.link">
+              <div class="sidebar__icon">
+                <em :class="val.icon"/>
+              </div>
+              <div class="sidebar__text">
+                {{ val.title }}
+              </div>
+            </router-link>
+          </div>
+        </div>
+      </div>
+      <div class="sidebar__bottom">
+        Bottom
+      </div>
+    </div>
+    <div class="content">
       <router-view/>
-    </main>
-
-    <footer class="footer"></footer>
+    </div>
   </div>
 </template>
 

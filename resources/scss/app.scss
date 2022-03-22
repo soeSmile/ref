@@ -1,15 +1,8 @@
-$z-mobile-menu: 999;
-$z-mobile-menu-bg: 998;
-
 @import "reset";
 @import "~@mdi/font/scss/materialdesignicons";
 @import "fonts/fonts";
-@import "sm";
+@import "ui/ui";
 
 html, body {
   font-family: $fontRegular;
 }
-
-@import "element-plus/dist/index.css";
-@import "layout";
-@import "mobile/mobile";

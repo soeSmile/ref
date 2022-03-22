@@ -1,3 +1,5 @@
+$z-mobile-menu: 999;
+$z-mobile-menu-bg: 998;
 $prefix: 'sm-';
 
 // Padding && margin step
@@ -6,4 +8,5 @@ $size: 0.25rem;
 // Font size start
 $fontSize: 0.75rem;
 
-@import "sm/indents";
+@import "_layout";
+@import "_indents";

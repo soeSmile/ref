@@ -1,0 +1,104 @@
+/**
+ Padding && margin
+ */
+$size: 0.25rem !default;
+$sizes: (
+        0: $size,
+        1: $size * 1,
+        2: $size * 2,
+        3: $size * 3,
+        4: $size * 4,
+        5: $size * 5,
+        6: $size * 6,
+        7: $size * 7,
+        8: $size * 8,
+        9: $size * 9,
+        10: $size * 10,
+        12: $size * 12,
+        15: $size * 15,
+        20: $size * 20,
+        30: $size * 30,
+        40: $size * 40,
+        50: $size * 50,
+);
+
+$distance: (
+        #{$prefix}m: margin,
+        #{$prefix}mt: margin-top,
+        #{$prefix}mr: margin-right,
+        #{$prefix}mb: margin-bottom,
+        #{$prefix}ml: margin-left,
+        #{$prefix}p: padding,
+        #{$prefix}pt: padding-top,
+        #{$prefix}pr: padding-right,
+        #{$prefix}pb: padding-bottom,
+        #{$prefix}pl: padding-left
+);
+
+$distancePX: (
+        #{$prefix}px: padding,
+);
+
+$distanceMX: (
+        #{$prefix}mx: padding,
+);
+
+$distancePY: (
+        #{$prefix}py: padding,
+);
+
+$distanceMY: (
+        #{$prefix}my: padding,
+);
+
+@each $class, $value in $distance {
+  @each $id, $size in $sizes {
+    .#{$class}-#{$id} {
+      #{$value}: $size !important;
+    }
+  }
+}
+
+@each $class, $value in $distancePX {
+  @each $id, $size in $sizes {
+    .#{$class}-#{$id} {
+      padding-left: $size !important;
+      padding-right: $size !important;
+    }
+  }
+}
+
+@each $class, $value in $distanceMX {
+  @each $id, $size in $sizes {
+    .#{$class}-#{$id} {
+      margin-left: $size !important;
+      margin-right: $size !important;
+    }
+  }
+}
+
+@each $class, $value in $distancePY {
+  @each $id, $size in $sizes {
+    .#{$class}-#{$id} {
+      padding-top: $size !important;
+      padding-bottom: $size !important;
+    }
+  }
+}
+
+@each $class, $value in $distanceMY {
+  @each $id, $size in $sizes {
+    .#{$class}-#{$id} {
+      margin-top: $size !important;
+      margin-bottom: $size !important;
+    }
+  }
+}
+
+.#{$prefix}p0 {
+  padding: 0 !important;
+}
+
+.#{$prefix}m0 {
+  margin: 0 !important;
+}
