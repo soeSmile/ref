@@ -32,6 +32,6 @@
 
 <script>
 export default {
-  name: 'user',
+  name: 'UserIndex',
 }
 </script>

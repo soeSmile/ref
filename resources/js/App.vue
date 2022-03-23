@@ -3,7 +3,7 @@
     <div class="sidebar">
       <div class="sidebar__top">
         <img class="sidebar__img"
-             src="img/logo.png" alt="">
+             src="/img/logo.png" alt="">
       </div>
       <div class="sidebar__wrap">
         <div class="sidebar__group">
@@ -11,7 +11,7 @@
             <router-link class="sidebar__item"
                          v-for="(val,key) in menu"
                          :key="key"
-                         :to="val.link">
+                         :to="{ name: val.link }">
               <div class="sidebar__icon">
                 <em :class="val.icon"/>
               </div>
@@ -47,9 +47,12 @@ export default {
   data () {
     return {
       menu: [
-        { title: 'Home', link: '/', icon: 'mdi mdi-home' },
-        { title: 'Setting', link: '/setting', icon: 'mdi mdi-cog' },
-        { title: 'User', link: '/user', icon: 'mdi mdi-account-multiple' },
+        { title: 'Главная', link: 'home', icon: 'mdi mdi-home' },
+        { title: 'Настройки', link: 'setting', icon: 'mdi mdi-cog' },
+        { title: 'Категории', link: 'category', icon: 'mdi mdi-shape' },
+        { title: 'Теги', link: 'tag', icon: 'mdi mdi-tag' },
+        { title: 'Ссылки', link: 'link', icon: 'mdi mdi-link' },
+        { title: 'Пользователи', link: 'user', icon: 'mdi mdi-account-multiple' },
       ],
     }
   },
