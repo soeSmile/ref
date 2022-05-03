@@ -1,6 +1,17 @@
 <template>
   <div class="app">
-    <div class="sidebar">
+    <div class="mobile">
+      <div class="mobile__item"
+           @click="showMenu=true">
+        <em class="mdi mdi-menu mobile__icon"/>
+      </div>
+    </div>
+    <div class="mobile__back"
+         @click="showMenu=false"
+         :class="{'show': showMenu}"></div>
+
+    <div class="sidebar"
+         :class="{'show': showMenu}">
       <div class="sidebar__top">
         <img class="sidebar__img"
              src="/img/logo.png" alt="">
@@ -9,6 +20,7 @@
         <div class="sidebar__group">
           <div class="sidebar__menu">
             <router-link class="sidebar__item"
+                         @click="showMenu=false"
                          v-for="(val,key) in menu"
                          :key="key"
                          :to="{ name: val.link }">
@@ -39,9 +51,9 @@ export default {
   name: 'App',
 
   setup () {
-    const isCollapse = ref(false)
+    const showMenu = ref(false)
 
-    return { isCollapse }
+    return { showMenu }
   },
 
   data () {

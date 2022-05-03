@@ -10,3 +10,9 @@
   background: $fon;
   padding: 2rem;
 }
+
+@include sm {
+  .content {
+    margin-left: 0;
+  }
+}

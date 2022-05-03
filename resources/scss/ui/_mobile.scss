@@ -1,0 +1,57 @@
+.mobile {
+  display: flex;
+
+  &__item {
+    padding: 1rem;
+    cursor: pointer;
+    color: $gray-dark;
+    transition: all .25s;
+
+    &:hover {
+      color: $purple;
+    }
+  }
+
+  &__icon {
+    font-size: 2rem;
+  }
+}
+
+.mobile__back {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: $z-index-back;
+  background: black;
+  opacity: 0.6;
+  height: 100%;
+  display: none;
+  transition: all .25s;
+}
+
+@include sm {
+  .mobile__back {
+    &.show {
+      display: block;
+    }
+  }
+}
+
+@include lg {
+  .mobile, .mobile__back {
+    display: none;
+  }
+}
+
+@include wd {
+  .mobile, .mobile__back {
+    display: none;
+  }
+}
+
+@include xw {
+  .mobile, .mobile__back {
+    display: none;
+  }
+}
