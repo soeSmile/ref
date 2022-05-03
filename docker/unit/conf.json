@@ -11,10 +11,7 @@
       },
       "action": {
         "share": [
-          "/var/www/public$uri",
-          "/var/www/public/js$uri",
-          "/var/www/public/css$uri",
-          "/var/www/public/fonts$uri"
+          "/var/www/public$uri"
         ],
         "fallback": {
           "pass": "applications/laravel"
