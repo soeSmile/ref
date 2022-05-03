@@ -47,8 +47,16 @@ RUN composer global require phpunit/phpunit ^9.0 --no-progress --no-scripts --no
 # Dev
 RUN pecl install xdebug
 RUN docker-php-ext-enable xdebug
-RUN curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar && \
-    mv phpcs.phar /usr/local/bin/phpcs && \
-    chmod +x /usr/local/bin/phpcs
+
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - 
+RUN apt-get install -y nodejs
+    
+# User
+ARG UID
+ARG GID
+
+RUN usermod -u ${UID} www-data
+RUN groupmod -g ${GID} www-data
+
 
 CMD ["unitd","--no-daemon"]
